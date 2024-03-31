@@ -32,6 +32,7 @@ function AddTransaction() {
             }
 
             transactionPayload.id = uuid();
+            transactionPayload.amount = +transaction.amount;
             transactionPayload.type = transaction.amount > 0 ? "CREDIT" : "DEBIT";
 
             dispatch(addTransaction(transactionPayload));
@@ -49,7 +50,7 @@ function AddTransaction() {
                 <div className="form-control">
                     <input type='number' name='amount' value={transaction.amount} onChange={handleChange} placeholder='Enter Amount' />
                 </div>
-                <button type='submit' className='add-transaction'>Add Transaction</button>
+                <button type='submit' className='btn'>Add Transaction</button>
             </form>
         </>
     )

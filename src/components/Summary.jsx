@@ -5,7 +5,6 @@ import IncomeExpense from './IncomeExpense'
 function Summary() {
   return (
     <div>
-        <Balance />
         <IncomeExpense />
     </div>
   )

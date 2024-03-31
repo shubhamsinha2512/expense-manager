@@ -1,17 +1,27 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import Balance from './Balance';
 
 function IncomeExpense() {
+  const transactions = useSelector(state => state.transactions) || [];
+  const income = transactions.filter(transaction => transaction.type === "CREDIT").reduce((accumulator, transaction) => accumulator += transaction.amount, 0);
+  const expense = transactions.filter(transaction => transaction.type === "DEBIT").reduce((accumulator, transaction) => accumulator += transaction.amount, 0);
+  const balance = Math.abs(income) - Math.abs(expense);
+
   return (
-    <div className='inc-exp-container'>
-        <div>
-            <h4>Income</h4>
-            <p className='money plus'>$500</p>
+    <>
+      <Balance balance={balance} />
+      <div className='inc-exp-container'>
+        <div className='money plus'>
+          <h4>Income</h4>
+          <p>${income}</p>
         </div>
         <div className='money minus'>
-            <h4>Expense</h4>
-            <p>$500</p>
+          <h4>Expense</h4>
+          <p>${expense}</p>
         </div>
-    </div>
+      </div>
+    </>
   )
 }
 

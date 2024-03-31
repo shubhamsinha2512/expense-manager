@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Balance() {
+function Balance(props) {
   return (
     <div>
-        <h4>Your Balance</h4>
-        <h1>$400</h1>
+      <h4>Your Balance</h4>
+      <h1>${props.balance || 0}</h1>
     </div>
   )
 }

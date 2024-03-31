@@ -2,14 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 export const transactionSlice = createSlice({
     name: "transaction",
-    initialState: [
-        {
-            id: '69310442-7047-4234-a685-ea76ab7764e5',
-            type: 'CREDIT',
-            description: 'ABC',
-            amount: '100'
-        }
-    ],
+    initialState: [],
     reducers: {
         addTransaction: ((state, action) => {
             state = [action.payload, ...state];
